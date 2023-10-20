@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <Head>
+        <style>
+            *{
+                margin: 0 ;
+                padding: 0;
+                /* list-style: none; */
+                font-family: Arial;          
+            }
+            .header {
+                width: 100%;
+                height: 20%;
+                position: sticky;
+                border-bottom: 3px solid black;
+                background-color: #FFAB40;
+                text-decoration: underline;
+                font-weight: bold;
+                
+
+            }           
+            .text{
+                padding-top: 15px;
+                color:black;
+                text-align: center;
+            }
+            /* body{
+                background: url("SortingShapes/backGround.png");
+
+            } */
+            .button_back{
+                background-color: #6fa8dcff;
+                color: black;
+                padding: 10px 28px;
+                cursor: pointer;
+                text-align: center;
+                font-size: 18px;
+                transition-duration: 0.4s;
+                position: fixed;
+                bottom: 23px;
+                right: 20px;
+            }
+            .button_back:hover {
+                background-color: purple;
+                color: white;
+            }
+            .parent_container{
+                width: 100%;                              
+                text-align: center; 
+                height: 50%;
+            }
+            .container_rectangle{
+                width: 200px;
+                height: 300px;
+                background: url("SortingShapes/rectangle.jpg");
+                background-position: center;
+                background-repeat: no-repeat; 
+                background-size: contain; 
+                border: 3px solid black;
+                display: inline-block;
+                margin: 20px;
+                
+
+            }
+            .container_triangle{
+                width: 200px;
+                height: 300px;                           
+                background: url("SortingShapes/triangle.png");
+                background-position: center; 
+                background-repeat: no-repeat; 
+                background-size: contain; 
+                border: 3px solid black;
+                display: inline-block;
+                margin: 20px;
+
+            }
+            .container_circle{
+                width: 200px;
+                height: 300px;             
+                background: url("SortingShapes/circle.png");
+                background-position: center; 
+                background-repeat: no-repeat; 
+                background-size: contain; 
+                border: 3px solid black;
+                display: inline-block;
+                margin: 20px;
+            }
+            .container_pick_and_drag{
+                width: 100%;
+                min-height: 39%;
+                position: absolute;
+                background-color: #fdfa72;
+                border-top: 3px solid black;
+                text-align: center;
+                display: flex;
+                justify-content: space-around;
+
+            }
+            #square_shape{
+                position:absolute;
+                height: 60px;
+                width: 150px;
+                background-color: purple;                           
+            }
+            #cirlce_shape{
+                height: 90px;
+                width: 90px;
+                background-color: blue;
+                border-radius: 50%;
+                display:inline-block;
+            }
+            #triangle_shape{
+                width: 0;
+                height: 0;
+                border-left: 50px solid transparent;
+                border-right: 50px solid transparent;
+                border-bottom: 100px solid red;
+                display:inline-block;
+            }
+        </style>
+        <script>
+            
+        </script>
+            
+    </Head>
+    <body>
+        <div class="header">                
+                    <h1 style="font-size: 30px;" class="text">Sorting Shapes</h1>
+                    <p style="font-size: 18px;" class="text">Pick and drag a shape to its correct station</p>               
+        </div>
+        
+        <div class="parent_container">
+            <div class="container_rectangle"></div>
+            <div class="container_triangle"></div>
+            <div class="container_circle"></div>
+        </div>
+
+        <div class="container_pick_and_drag">
+            <div id="square_shape"></div>
+            <div id="cirlce_shape"></div>
+            <div id="triangle_shape"></div>
+        </div>
+        <button type="button" class="button_back">Quit</button>
+    </body>
+</html>
