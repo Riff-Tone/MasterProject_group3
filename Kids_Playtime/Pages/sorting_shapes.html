@@ -149,7 +149,72 @@
     </style>
 </head>
 <body>
+    <script>
+        function generateRandomShapes() {
+            const container = document.getElementById("pick-and-drag-container");
+            container.innerHTML = '';
     
+            const shapes = ["rectangle", "circle", "triangle"];
+            const totalShapes = 10;
+    
+            for (let i = 0; i < totalShapes; i++) {
+                const randomShape = shapes[Math.floor(Math.random() * shapes.length)];
+    
+                const shapeElement = document.createElement("div");
+                shapeElement.classList.add("draggable-shape");
+                shapeElement.dataset.shape = randomShape;
+    
+                let shapeHtml = "";
+                if (randomShape === "rectangle") {
+                    shapeHtml = '<div class="rectangle"></div>';
+                } else if (randomShape === "circle") {
+                    shapeHtml = '<div class="circle"></div>';
+                } else if (randomShape === "triangle") {
+                    shapeHtml = '<div class="triangle-up"></div>';
+                }
+                shapeElement.innerHTML = shapeHtml;
+                container.appendChild(shapeElement);
+            }
+    
+            const draggableShapes = document.querySelectorAll('.draggable-shape');
+    
+            draggableShapes.forEach((shape) => {
+                shape.draggable = true;
+    
+                shape.addEventListener('dragstart', (e) => {
+                    e.dataTransfer.setData('text/plain', e.target.dataset.shape);
+                });
+            });
+        }
+    
+        window.addEventListener("load", generateRandomShapes);
+    
+        const shapeContainers = document.querySelectorAll('.shape-container');
+    
+        shapeContainers.forEach((container) => {
+            container.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                container.style.background = 'none';
+            });
+    
+            container.addEventListener('drop', (e) => {
+                e.preventDefault();
+                const droppedShape = e.dataTransfer.getData('text/plain');
+                const correctShape = container.dataset.correctShape;
+    
+                if (droppedShape === correctShape) {
+                    const counter = document.getElementById('counter');
+                    const currentCount = parseInt(counter.textContent.split(" ")[2]);
+                    counter.textContent = `Correct Placements: ${currentCount + 1}`;
+                    const shapeToRemove = document.querySelector(`[data-shape="${droppedShape}"]`);
+                    shapeToRemove.remove();
+                }
+    
+                container.style.background = '';
+            });
+        });
+        </script>
+        
     <div class="header">
         <button type="button" class="top-left" id="button_back">Quit</button>
         <h1 style="font-size: 1.5rem;" class="text">Sorting Shapes</h1>
@@ -168,70 +233,6 @@
         </div>
     </div>
 
-    <script>
-    function generateRandomShapes() {
-        const container = document.getElementById("pick-and-drag-container");
-        container.innerHTML = '';
 
-        const shapes = ["rectangle", "circle", "triangle"];
-        const totalShapes = 10;
-
-        for (let i = 0; i < totalShapes; i++) {
-            const randomShape = shapes[Math.floor(Math.random() * shapes.length)];
-
-            const shapeElement = document.createElement("div");
-            shapeElement.classList.add("draggable-shape");
-            shapeElement.dataset.shape = randomShape;
-
-            let shapeHtml = "";
-            if (randomShape === "rectangle") {
-                shapeHtml = '<div class="rectangle"></div>';
-            } else if (randomShape === "circle") {
-                shapeHtml = '<div class="circle"></div>';
-            } else if (randomShape === "triangle") {
-                shapeHtml = '<div class="triangle-up"></div>';
-            }
-            shapeElement.innerHTML = shapeHtml;
-            container.appendChild(shapeElement);
-        }
-
-        const draggableShapes = document.querySelectorAll('.draggable-shape');
-
-        draggableShapes.forEach((shape) => {
-            shape.draggable = true;
-
-            shape.addEventListener('dragstart', (e) => {
-                e.dataTransfer.setData('text/plain', e.target.dataset.shape);
-            });
-        });
-    }
-
-    window.addEventListener("load", generateRandomShapes);
-
-    const shapeContainers = document.querySelectorAll('.shape-container');
-
-    shapeContainers.forEach((container) => {
-        container.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            container.style.background = 'none';
-        });
-
-        container.addEventListener('drop', (e) => {
-            e.preventDefault();
-            const droppedShape = e.dataTransfer.getData('text/plain');
-            const correctShape = container.dataset.correctShape;
-
-            if (droppedShape === correctShape) {
-                const counter = document.getElementById('counter');
-                const currentCount = parseInt(counter.textContent.split(" ")[2]);
-                counter.textContent = `Correct Placements: ${currentCount + 1}`;
-                const shapeToRemove = document.querySelector(`[data-shape="${droppedShape}"]`);
-                shapeToRemove.remove();
-            }
-
-            container.style.background = '';
-        });
-    });
-    </script>
 </body>
 </html>
