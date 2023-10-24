@@ -1,236 +1,224 @@
 <!DOCTYPE html>
 <html>
-    <Head>
-        <style>
-            *{
-                margin: 0 ;
-                padding: 0;
-                font-family: Arial;          
-            }
-            .header {
-                width: 100%;
-                height: 20%;
-                position: sticky;
-                border-bottom: 3px solid black;
-                background-color: #FFAB40;
-                text-decoration: underline;
-                font-weight: bold;
-            }           
-            .text{
-                padding-top: 15px;
-                color:black;
-                text-align: center;
-            }
-            .button_back{
-                background-color: #6fa8dcff;
-                color: black;
-                padding: 10px 28px;
-                cursor: pointer;
-                text-align: center;
-                font-size: 18px;
-                transition-duration: 0.4s;
-                position: fixed;
-                bottom: 23px;
-                right: 20px;
-            }
-            .button_back:hover {
-                background-color: purple;
-                color: green;
-            }
-            .parent_container{
-                width: 100%;                              
-                text-align: center; 
-                height: 50%;
-            }
-            .container_rectangle{
-                width: 200px;
-                height: 300px;
-                background: url("SortingShapes/rectangle.jpg");
-                background-position: center;
-                background-repeat: no-repeat; 
-                background-size: contain; 
-                border: 3px solid black;
-                display: inline-block;
-                margin: 20px;
-            }
-            .container_triangle{
-                width: 200px;
-                height: 300px;                           
-                background: url("SortingShapes/triangle.png");
-                background-position: center; 
-                background-repeat: no-repeat; 
-                background-size: contain; 
-                border: 3px solid black;
-                display: inline-block;
-                margin: 20px;
-            }
-            .container_circle{
-                width: 200px;
-                height: 300px;             
-                background: url("SortingShapes/circle.png");
-                background-position: center; 
-                background-repeat: no-repeat; 
-                background-size: contain; 
-                border: 3px solid black;
-                display: inline-block;
-                margin: 20px;
-            }
-            .container_pick_and_drag{
-                width: 100%;
-                min-height: 100%;               
-                background-color: #fdfa72;
-                border-top: 3px solid black;
-                text-align: center;
-                display: flex;
-                justify-content: space-around;              
-            }
-            #square_shape{
-                position:absolute;
-                height: 60px;
-                width: 150px;
-                background-color: purple;                           
-            }
-            #cirlce_shape{
-                position:absolute;
-                height: 90px;
-                width: 90px;
-                background-color: blue;
-                border-radius: 50%;
-                display:inline-block;
-            }
-            #triangle_shape{
-                position:absolute;
-                width: 0;
-                height: 0;
-                border-left: 50px solid transparent;
-                border-right: 50px solid transparent;
-                border-bottom: 100px solid red;
-                display:inline-block;
-            }
-        </style>
-            
-    </Head>
-    <body>
-        <div class="header">                
-                    <h1 style="font-size: 30px;" class="text">Sorting Shapes</h1>
-                    <p style="font-size: 18px;" class="text">Pick and drag a shape to its correct station</p>               
-        </div>
-        
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        .header {
+            min-height: 10%;
+            border-bottom: 3px solid black;
+            background-color: #FFAB40;
+            text-decoration: underline;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .text {
+            padding-top: 10px;
+            color: black;
+        }
+
+        #button_back {
+            background-color: #6fa8dcff;
+            color: black;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 15px;
+            transition-duration: 0.4s;
+        }
+
+        #button_back:hover {
+            background-color: purple;
+            color: green;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 90%;
+        }
+
+        .parent_container {
+            display: flex;
+            justify-content: space between;
+            align-items: center;
+            height: 30%;
+        }
+        #rectangle_container{
+
+            background:url("Users/riff/Projects/Kids_Playtime/Images/rectangle.jpg");
+        }
+        .shape-container {
+            flex-grow: 1;
+            flex: 0.6;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            border: 3px solid black;
+            text-align: center;
+            padding: 1%;
+            margin: 24% 8% 10% 8%;
+            min-height: 3.5in;
+            z-index: 1;
+        }
+
+        .container_pick_and_drag {
+            display: flex;
+            justify-content: space-between;
+            align-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            border-top: 3px solid black;
+            background-color: #fdfa72;
+            padding: 2%;
+            min-height: 1.25in;
+        }
+
+        .draggable-shape {
+            flex: 0.25;
+            cursor: grab;
+        }
+        .rectangle {
+            height: 50px;
+            width: 100px;
+            background-color: #555;
+            outline: none;
+        }
+        .circle {
+            height: 50px;
+            width: 50px;
+            background-color: #555;
+            border-radius: 50%;
+            outline: none;
+        }
+        .triangle-up {
+            width: 0;
+            height: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-bottom: 50px solid #555;
+            outline: none;
+        }
+        #counter {
+            font-size: 20px;
+            text-align: right;
+            width: 100%;
+        }
+        .top-right {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1rem;
+            text-align: right;
+        }
+        .top-left{
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="header">
+        <button type="button" class="top-left" id="button_back">Quit</button>
+        <h1 style="font-size: 1.5rem;" class="text">Sorting Shapes</h1>
+        <p style="font-size: 1rem;" class="text">Pick and drag a shape to its correct station</p>
+        <p id="counter" class="top-right">Correct Placements: 0</p>
+    </div>
+
+    <div class="content">
         <div class="parent_container">
-            <div class="container_rectangle"><p>rectangle</p></div>
-            <div class="container_triangle"><p>triangle</p></div>
-            <div class="container_circle"><p>circle</p></div>
+            <div class="shape-container" id="rectangle_container" data-correct-shape="rectangle"><p>rectangle</p></div>
+            <div class="shape-container" data-correct-shape="triangle"><p>triangle</p></div>
+            <div class="shape-container" data-correct-shape="circle"><p>circle</p></div>
         </div>
 
-        <div class="container_pick_and_drag">
-            <div id="square_shape"></div>
-            <div id="cirlce_shape"></div>
-            <div id="triangle_shape"></div>
+        <div class="container_pick_and_drag" id="pick-and-drag-container">
+            <!-- Shapes will be added here with JavaScript -->
         </div>
-        <button type="button" class="button_back">Quit</button>
-        <script>
-            dragElement(document.getElementById("square_shape"));
-                function dragElement(elmnt) {
-                    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-                    if (document.getElementById(elmnt.id + "header")) {
-                        document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-                    } else {
-                        elmnt.onmousedown = dragMouseDown;
-                    }
+    </div>
 
-                    function dragMouseDown(e) {
-                        e = e || window.event;
-                        e.preventDefault();
-                        pos3 = e.clientX;
-                        pos4 = e.clientY;
-                        document.onmouseup = closeDragElement;
-                        document.onmousemove = elementDrag;
-                    }
+    <script>
+        // Function to generate and add random shapes to the container
+        function generateRandomShapes() {
+          const container = document.getElementById("pick-and-drag-container");
+          container.innerHTML = '';
+      
+          const shapes = ["rectangle", "circle", "triangle"];
+          const totalShapes = 10;
+      
+          for (let i = 0; i < totalShapes; i++) {
+            const randomShape = shapes[Math.floor(Math.random() * shapes.length)];
+      
+            const shapeElement = document.createElement("div");
+            shapeElement.classList.add("draggable-shape");
+            shapeElement.dataset.shape = randomShape;
+      
+            let shapeHtml = "";
+            if (randomShape === "rectangle") {
+              shapeHtml = '<div class="rectangle"></div>';
+            } else if (randomShape === "circle") {
+              shapeHtml = '<div class="circle"></div>';
+            } else if (randomShape === "triangle") {
+              shapeHtml = '<div class="triangle-up"></div>';
+            }
+      
+            shapeElement.innerHTML = shapeHtml;
+            container.appendChild(shapeElement);
+          }
+      
+          // Enable the generated shapes to be draggable
+          const draggableShapes = document.querySelectorAll('.draggable-shape');
+      
+          draggableShapes.forEach((shape) => {
+            shape.draggable = true;
+      
+            shape.addEventListener('dragstart', (e) => {
+              e.dataTransfer.setData('text/plain', e.target.dataset.shape);
+            });
+          });
+        }
+      
+        // Add random shapes when the page loads
+        window.addEventListener("load", generateRandomShapes);
+      
+        // Add event listeners to the shape containers in the "content" class
+const shapeContainers = document.querySelectorAll('.shape-container');
 
-                    function elementDrag(e) {
-                        e = e || window.event;
-                        e.preventDefault();
-                        pos1 = pos3 - e.clientX;
-                        pos2 = pos4 - e.clientY;
-                        pos3 = e.clientX;
-                        pos4 = e.clientY;
-                        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-                        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-                    }
+shapeContainers.forEach((container) => {
+    container.addEventListener('dragover', (e) => {
+        e.preventDefault();
+    });
 
-                    function closeDragElement() {
-                        document.onmouseup = null;
-                        document.onmousemove = null;
-                    }
-                }
-                dragElement(document.getElementById("cirlce_shape"));
-                function dragElement(elmnt) {
-                    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-                    if (document.getElementById(elmnt.id + "header")) {
-                        document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-                    } else {
-                        elmnt.onmousedown = dragMouseDown;
-                    }
+    container.addEventListener('drop', (e) => {
+        e.preventDefault();
+        const droppedShape = e.dataTransfer.getData('text/plain');
+        const correctShape = container.dataset.correctShape;
 
-                    function dragMouseDown(e) {
-                        e = e || window.event;
-                        e.preventDefault();
-                        pos3 = e.clientX;
-                        pos4 = e.clientY;
-                        document.onmouseup = closeDragElement;
-                        document.onmousemove = elementDrag;
-                    }
+        if (droppedShape === correctShape) {
+            // Shape is placed correctly, increment the counter
+            const counter = document.getElementById('counter');
+            const currentCount = parseInt(counter.textContent.split(" ")[2]);
+            counter.textContent = `Correct Placements: ${currentCount + 1}`;
 
-                    function elementDrag(e) {
-                        e = e || window.event;
-                        e.preventDefault();
-                        pos1 = pos3 - e.clientX;
-                        pos2 = pos4 - e.clientY;
-                        pos3 = e.clientX;
-                        pos4 = e.clientY;
-                        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-                        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-                    }
-
-                    function closeDragElement() {
-                        document.onmouseup = null;
-                        document.onmousemove = null;
-                    }
-                }
-                dragElement(document.getElementById("triangle_shape"));
-                function dragElement(elmnt) {
-                    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-                    if (document.getElementById(elmnt.id + "header")) {
-                        document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
-                    } else {
-                        elmnt.onmousedown = dragMouseDown;
-                    }
-
-                    function dragMouseDown(e) {
-                        e = e || window.event;
-                        e.preventDefault();
-                        pos3 = e.clientX;
-                        pos4 = e.clientY;
-                        document.onmouseup = closeDragElement;
-                        document.onmousemove = elementDrag;
-                    }
-
-                    function elementDrag(e) {
-                        e = e || window.event;
-                        e.preventDefault();
-                        pos1 = pos3 - e.clientX;
-                        pos2 = pos4 - e.clientY;
-                        pos3 = e.clientX;
-                        pos4 = e.clientY;
-                        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-                        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-                    }
-
-                    function closeDragElement() {
-                        document.onmouseup = null;
-                        document.onmousemove = null;
-                    }
-                }
-        </script>
-    </body>
+            // Remove the dropped shape from both containers
+            const shapeToRemove = document.querySelector(`[data-shape="${droppedShape}"]`);
+            shapeToRemove.remove();
+            e.target.querySelector(`[data-shape="${droppedShape}"]`).remove();
+        }
+    });
+});
+    </script>
+</body>
 </html>
