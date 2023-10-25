@@ -149,6 +149,23 @@
     </style>
 </head>
 <body>
+    <div class="header">
+        <button type="button" class="top-left" id="button_back">Quit</button>
+        <h1 style="font-size: 1.5rem;" class="text">Sorting Shapes</h1>
+        <p style="font-size: 1rem;" class="text">Pick and drag a shape to its correct station</p>
+        <p id="counter" class="top-right">Correct Placements: 0</p>
+    </div>
+
+    <div class="content">
+        <div class="parent_container">
+            <div class="shape-container" id="rectangle_container" data-correct-shape="rectangle"><p>rectangle</p></div>
+            <div class="shape-container" data-correct-shape="triangle"><p>triangle</p></div>
+            <div class="shape-container" data-correct-shape="circle"><p>circle</p></div>
+        </div>
+
+        <div class="container_pick_and_drag" id="pick-and-drag-container">
+        </div>
+    </div>
     <script>
         function generateRandomShapes() {
             const container = document.getElementById("pick-and-drag-container");
@@ -214,25 +231,5 @@
             });
         });
         </script>
-        
-    <div class="header">
-        <button type="button" class="top-left" id="button_back">Quit</button>
-        <h1 style="font-size: 1.5rem;" class="text">Sorting Shapes</h1>
-        <p style="font-size: 1rem;" class="text">Pick and drag a shape to its correct station</p>
-        <p id="counter" class="top-right">Correct Placements: 0</p>
-    </div>
-
-    <div class="content">
-        <div class="parent_container">
-            <div class="shape-container" id="rectangle_container" data-correct-shape="rectangle"><p>rectangle</p></div>
-            <div class="shape-container" data-correct-shape="triangle"><p>triangle</p></div>
-            <div class="shape-container" data-correct-shape="circle"><p>circle</p></div>
-        </div>
-
-        <div class="container_pick_and_drag" id="pick-and-drag-container">
-        </div>
-    </div>
-
-
 </body>
 </html>
