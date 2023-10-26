@@ -50,7 +50,7 @@
 
         .parent_container {
             display: flex;
-            justify-content: space between;
+            justify-content: space-between;
             align-items: center;
             height: 30%;
         }
@@ -70,6 +70,9 @@
             min-height: 3.5in;
             z-index: 1;
         }
+        #rectangle_container{
+            background:url("../Images/rectangle.jpg");
+        }
 
         .container_pick_and_drag {
             display: flex;
@@ -78,7 +81,6 @@
             align-items: center;
             flex-wrap: wrap;
             border-top: 3px solid black;
-            background: url("https://st5.depositphotos.com/35914836/63547/i/1600/depositphotos_635479520-stock-photo-background-texture-old-brick-wall.jpg");
             padding: 2%;
             min-height: 1.25in;
             position:relative;
@@ -158,7 +160,7 @@
 
     <div class="content">
         <div class="parent_container">
-            <div class="shape-container" id="rectangle_container" data-correct-shape="rectangle"><p>rectangle</p></div>
+            <div class="shape-container" id="rectangle_container" data-correct-shape="rectangle"></div>
             <div class="shape-container" data-correct-shape="triangle"><p>triangle</p></div>
             <div class="shape-container" data-correct-shape="circle"><p>circle</p></div>
         </div>
