@@ -75,6 +75,7 @@
         }
 
         .container_pick_and_drag {
+            background:url("../Images/rectangle.jpg");
             display: flex;
             justify-content: space-between;
             align-content: space-between;
@@ -85,26 +86,7 @@
             min-height: 1.25in;
             position:relative;
             z-index:1;
-        }
-
-        .draggable-shape {
-            flex: 0.25;
-            cursor: grab;
-            background: transparent;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: none;
-            padding: 0;
-        }
-        .draggable-shape.dragging {
-            opacity: 0.6;
-        }
-
-        .draggable-shape::after {
-            content: "";
-            background: transparent;
-            border: none;
+            
         }
 
         .rectangle {
@@ -119,6 +101,7 @@
             background-color: #555;
             border-radius: 50%;
         }
+
 
         .triangle-up {
             width: 0;
@@ -197,41 +180,40 @@
     
             const draggableShapes = document.querySelectorAll('.draggable-shape');
     
-            draggableShapes.forEach((shape) => {
-                shape.draggable = true;
-    
-                shape.addEventListener('dragstart', (e) => {
-                    e.dataTransfer.setData('text/plain', e.target.dataset.shape);
+                draggableShapes.forEach((shape) => {
+                    shape.draggable = true;
+        
+                    shape.addEventListener('dragstart', (e) => {
+                        e.dataTransfer.setData('text/plain', e.target.dataset.shape);
+                    });
                 });
-            });
-        }
+            }
     
         window.addEventListener("load", generateRandomShapes);
     
-        const shapeContainers = document.querySelectorAll('.shape-container');
-    
-        shapeContainers.forEach((container) => {
-            container.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                container.style.background = 'none';
+            const shapeContainers = document.querySelectorAll('.shape-container');
+        
+            shapeContainers.forEach((container) => {
+                container.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    container.style.background = 'none';
+                });
+        
+                container.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    const droppedShape = e.dataTransfer.getData('text/plain');
+                    const correctShape = container.dataset.correctShape;
+        
+                    if (droppedShape === correctShape) {
+                        const counter = document.getElementById('counter');
+                        const currentCount = parseInt(counter.textContent.split(" ")[2]);
+                        counter.textContent = `Correct Placements: ${currentCount + 1}`;
+                        const shapeToRemove = document.querySelector(`[data-shape="${droppedShape}"]`);
+                        shapeToRemove.remove();
+                    }
+                    container.style.background = '';
+                });
             });
-    
-            container.addEventListener('drop', (e) => {
-                e.preventDefault();
-                const droppedShape = e.dataTransfer.getData('text/plain');
-                const correctShape = container.dataset.correctShape;
-    
-                if (droppedShape === correctShape) {
-                    const counter = document.getElementById('counter');
-                    const currentCount = parseInt(counter.textContent.split(" ")[2]);
-                    counter.textContent = `Correct Placements: ${currentCount + 1}`;
-                    const shapeToRemove = document.querySelector(`[data-shape="${droppedShape}"]`);
-                    shapeToRemove.remove();
-                }
-    
-                container.style.background = '';
-            });
-        });
         </script>
 </body>
 </html>
