@@ -153,7 +153,9 @@
 </head>
 <body>
     <div class="header">
-        <button type="button" class="top-left" id="button_back">Quit</button>
+        <a href="../index.html">
+            <button type="button" class="top-left" id="button_back">Quit</button>
+        </a>
         <h1 style="font-size: 1.5rem;" class="text">Sorting Shapes</h1>
         <p style="font-size: 1rem;" class="text">Pick and drag a shape to its correct station</p>
         <p id="counter" class="top-right">Correct Placements: 0</p>
@@ -214,7 +216,6 @@
             shapeContainers.forEach((container) => {
                 container.addEventListener('dragover', (e) => {
                     e.preventDefault();
-                    container.style.background = 'none';
                 });
         
                 container.addEventListener('drop', (e) => {
@@ -228,10 +229,20 @@
                         counter.textContent = `Correct Placements: ${currentCount + 1}`;
                         const shapeToRemove = document.querySelector(`[data-shape="${droppedShape}"]`);
                         shapeToRemove.remove();
+                        checkForCompletion();
                     }
-                    container.style.background = '';
                 });
             });
+            // Function to check if all shapes are placed correctly
+            function checkForCompletion() {
+                const counter = document.getElementById('counter');
+                const currentCount = parseInt(counter.textContent.split(" ")[2]);
+
+                if (currentCount == 10) {
+                    // Redirect to the congratulation page
+                    window.location.href = "sorting_shapes_congratulation.html";
+                }
+            }
         </script>
 </body>
 </html>
