@@ -72,6 +72,21 @@
         }
         #rectangle_container{
             background:url("../Images/rectangle.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        #triangle_container{
+            background:url("../Images/rectangle.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        #circle_container{
+            background:url("../Images/rectangle.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
         }
 
         .container_pick_and_drag {
@@ -144,8 +159,8 @@
     <div class="content">
         <div class="parent_container">
             <div class="shape-container" id="rectangle_container" data-correct-shape="rectangle"></div>
-            <div class="shape-container" data-correct-shape="triangle"><p>triangle</p></div>
-            <div class="shape-container" data-correct-shape="circle"><p>circle</p></div>
+            <div class="shape-container" id="triangle_container" data-correct-shape="triangle"></div>
+            <div class="shape-container" id="circle_container" data-correct-shape="circle"></div>
         </div>
 
         <div class="container_pick_and_drag" id="pick-and-drag-container">
