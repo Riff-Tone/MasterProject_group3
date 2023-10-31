@@ -68,8 +68,8 @@
             text-align: center;
             padding: 1%;
             margin: 24% 8% 10% 8%;
-            height: 100px; /* Set a fixed height for drop containers */
-            width: 100px; /* Set a fixed width for drop containers */
+            height: 100px;
+            width: 100px; 
             min-height: 3.5in;
             z-index: 1;
         }
@@ -152,6 +152,7 @@
     </style>
 </head>
 <body>
+    <title>Kids Playtime</title>
     <div class="header">
         <a href="../index.html">
             <button type="button" class="top-left" id="button_back">Quit</button>
@@ -233,13 +234,11 @@
                     }
                 });
             });
-            // Function to check if all shapes are placed correctly
             function checkForCompletion() {
                 const counter = document.getElementById('counter');
                 const currentCount = parseInt(counter.textContent.split(" ")[2]);
 
                 if (currentCount == 10) {
-                    // Redirect to the congratulation page
                     window.location.href = "sorting_shapes_congratulation.html";
                 }
             }
