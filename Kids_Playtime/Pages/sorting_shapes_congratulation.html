@@ -2,6 +2,13 @@
 <html>
     <head>
         <style>
+        @font-face {
+            font-family: 'SunnyspellsRegular-MV9ze';
+            src: url('../Fonts/SunnyspellsRegular-MV9ze.otf') format('woff2'),
+                url('../Fonts/SunnyspellsRegular-MV9ze.otf') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
         body{
             display: flex;
             flex-direction: column;
@@ -9,15 +16,18 @@
             justify-content: center;
             height: 100vh;
             margin: 0;
-            background: url("../Images/sorting_shapes_backGround.png");
+            background: url("https://static.vecteezy.com/system/resources/previews/004/141/538/original/congradulations-funny-lettering-futuristic-space-colorful-greeting-letters-for-kids-birthday-childhood-festival-success-congrats-message-festive-colored-text-illustration-free-vector.jpg");
+            background-size: cover;
+            background-position: center;
         }
         #text {
-            font-size: 50px;
+            font-family: 'SunnyspellsRegular-MV9ze';
+            font-size: 90px;
             text-align: center;
-            color: blue;
             text-decoration: underline;
         }
         button {
+            margin-top: 4in;
             padding: 10px 20px;
             font-size: 16px;
         }
@@ -25,7 +35,6 @@
     </head>
     <body>
         <title>Kids Playtime</title>
-        <p id="text">congradulations</p>
         <a href="../index.html">
             <button type="button">
                 homepage
