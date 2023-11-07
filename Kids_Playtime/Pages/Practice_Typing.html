@@ -11,6 +11,7 @@
 
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
@@ -23,10 +24,11 @@
         }
 
         .container {
-            background-color: #F0DB4F;
+            margin-top: 5rem;
+            background-color: #f0ece7;
             padding: 1rem;
             border-radius: .5rem;
-            width: 700px;
+            width: 27rem;
             max-width: 90%;
         }
 
@@ -86,19 +88,96 @@
             margin-left: calc(1rem + 2px);
             margin-right: calc(1rem + 2px);
         }
+        .monitor{
+            margin-top: 0;
+            display:flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            
+        }
+        .outer_screen{
+            background-color: #f0ece7;
+            border: 1px solid black;
+            width: 27rem;
+            height: 15rem;
+            border-radius: 1em 1em 0 0 ;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #inner_screen{
+            background-color: #f0ece7;
+            border: 1px solid black;
+            width: 25rem;
+            height: 13rem;
+            text-align: justify;
+        }
+        .undermonitor{
+            background-color: #f0ece7;
+            border:1px solid black;
+            border-top: 0px;
+            width:27rem;
+            height: 3rem;
+            border-radius: 0 0 1em 1em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .button{
+            background-color: #d0d0d0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            height: 1.5rem;
+            width: 1.5rem;
+            border-radius: 1em;
+        }
+        #textInsideMonitor{
+            width: 100%;
+            height:100%;
+            background-color: white;
+            padding: 1rem;
+        }
+        .counter{
+            font-family: 'RustyHooksRegular';
+            font-size: 1.5rem;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            right: 5rem;
+            top:1rem;
+            width: 15rem;
+            height: 2rem;
+            border: 1px solid black;
+            background-color: #f0ece7;
+        }
     </style>
 </head>
 <body>
     <a href="../index.html">
         <button type="button" class="top-left" id="button_back">Quit</button>
     </a>
-    <div class="userpromt" id="userprompt"></div>
+    <div class="counter">Get 4 correct: 0</div>
+    <div class="monitor">
+        <div class="outer_screen">
+            <div id="inner_screen">
+                <div id="textInsideMonitor"></div>
+            </div>
+        </div>
+        <div class="undermonitor">
+            <div class="button"></div>
+        </div>
+    </div>
+
     <div class="container">
         <textarea id="quoteInput" class="quote-input" autofocus placeholder="Type here"></textarea>
     </div>
     <script>
         const RANDOM_QUOTE_API_URL = 'http://api.quotable.io/random'
-        const quoteDisplayElement = document.getElementById('userprompt')
+        const quoteDisplayElement = document.getElementById('textInsideMonitor')
         const quoteInputElement = document.getElementById('quoteInput')
         let counter = 0
 
@@ -133,7 +212,7 @@
         }
 
         async function renderNewQuote() {
-            if (counter == 3){
+            if (counter == 4){
                 window.location.href = "sorting_shapes_congratulation.html";
             }
             const quote = await getRandomQuote()

@@ -128,11 +128,45 @@
             font-size: 3rem;
         }
         .heart_Containers{
-            border: 1px solid red;
+            position: absolute;
+            right: 8rem;
+            top:4rem;
+            width: 9rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .heart1, .heart2, .heart3{
+            width: 2.5rem;
+            height: 100%;
+            background: url('../Images/red_heart_transparent.png');
+            background-position: center;
+            background-size: contain;
+        }
+        .counter{
+            font-family: 'RustyHooksRegular';
+            font-size: 1.5rem;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            right: 5rem;
+            top:1rem;
+            width: 15rem;
+            height: 2rem;
+            border: 1px solid black;
+            background-color: #f0ece7;
         }
     </style>
 </head>
     <body>
+        <div class="heart_Containers">
+            <div class="heart1"></div>
+            <div class="heart2"></div>
+            <div class="heart3"></div>
+        </div>
+        <div class="counter">Get 4 correct: 0</div>
         <div id="instructions">
             Associate the correct word with the picture.
         </div>
@@ -156,9 +190,7 @@
                 <button class="answer-button">word 4</button>
             </div>
         </div>
-        <div class="heart_Containers">
 
-        </div>
 
         <script>
             const photoContainer = document.getElementById("photo-container");
@@ -179,7 +211,7 @@
                     [array[i], array[j]] = [array[j], array[i]];
                 }
             }
-    
+            
             function assignAnswers() {
                 shuffleArray(photoData);
                 displayedPhoto.src = photoData[0].src;
