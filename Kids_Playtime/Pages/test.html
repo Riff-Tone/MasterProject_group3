@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word association game</title>
+    <style>
+	* {
+    font-family: Helvetica;
+}
+
+
+body {
+    background-image: url("wallpaperflare.com_wallpaper.jpg");
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #cccccc;
+    opacity: 0.9;
+}
+
+
+#one.square {
+    height: 100px;
+    width: 100%;
+    padding: 0%;
+    border: 3px solid rgb(9, 123, 9);
+    background-color: yellow;
+    margin-left: -4px;
+    margin-top: 3px;
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#one.square h1 {
+    font-size: 48px;
+    color: blueviolet;
+    text-shadow: 0.5px 0.5px black;
+}
+
+
+.regquestion {
+    text-align: center;
+    font-size: 36px;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 6px;
+}
+
+
+#questionnaire.square {
+    height: 100px;
+    width: 270px;
+    padding: 0%;
+    border: 3px solid rgb(9, 123, 9);
+    background-color: rgb(0, 229, 255);
+    margin-top: -8px;
+    margin-bottom: 0px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#questionnaire.square p, #letterA.square p, #letterB.square p, #letterC.square p, #letterD.square p{
+    font-size: 36px;
+    color: black;
+    text-shadow: 0.5px 0.5px yellowgreen;
+}
+
+
+.firsttwodoubles, .seconddoubles {
+    display: flex;
+    justify-content: center;
+}
+
+
+#letterA.square {
+    height: 100px;
+    width: 270px;
+    padding: 0%;
+    border: 3px solid rgb(9, 123, 9);
+    background-color: rgb(255, 145, 0);
+    margin-top: 32px;
+    margin-bottom: 0px;
+    margin-right: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#letterB.square {
+    height: 100px;
+    width: 270px;
+    padding: 0%;
+    border: 3px solid rgb(9, 123, 9);
+    background-color: rgb(247, 0, 255);
+    margin-top: 32px;
+    margin-bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#letterC.square {
+    height: 100px;
+    width: 270px;
+    padding: 0%;
+    border: 3px solid rgb(9, 123, 9);
+    background-color: rgb(229, 255, 0);
+    margin-top: 32px;
+    margin-bottom: 0px;
+    margin-right: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+#letterD.square {
+    height: 100px;
+    width: 270px;
+    padding: 0%;
+    border: 3px solid rgb(9, 123, 9);
+    background-color: rgb(0, 255, 51);
+    margin-top: 32px;
+    margin-bottom: 0px;
+    margin-right: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+   </style>
+</head>
+<body>
+    <div class = "square" id = "one">
+        <h1> WORD ASSOCIATION GAME </h1>
+    </div>
+
+
+    <p class="regquestion"> <strong>Find the odd one out - with:</strong> </p>>
+    <div class = "square" id = "questionnaire">
+        <p> Cat </p>
+    </div>
+
+
+    <div class = "firsttwodoubles">
+        <div class = "square" id = "letterA"> <p>Dog</p> </div>
+        <div class = "square" id = "letterB"> <p>Parrot</p> </div>
+    </div>
+
+
+    <div class = "seconddoubles">
+        <div class = "square" id = "letterC"> <p>Mouse</p></div>
+        <div class = "square" id = "letterD"> <p>Cart</p></div>
+    </div>
+</body>
+</html>
