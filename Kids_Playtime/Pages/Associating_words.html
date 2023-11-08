@@ -137,14 +137,14 @@
             align-items: center;
             justify-content: space-between;
         }
-        .heart1, .heart2, .heart3{
+        #heart1, #heart2, #heart3{
             width: 2.5rem;
             height: 100%;
             background: url('../Images/red_heart_transparent.png');
             background-position: center;
             background-size: contain;
         }
-        .counter{
+        #counter{
             font-family: 'RustyHooksRegular';
             font-size: 1.5rem;
             position: absolute;
@@ -162,11 +162,11 @@
 </head>
     <body>
         <div class="heart_Containers">
-            <div class="heart1"></div>
-            <div class="heart2"></div>
-            <div class="heart3"></div>
+            <div id="heart1"></div>
+            <div id="heart2"></div>
+            <div id="heart3"></div>
         </div>
-        <div class="counter">Get 4 correct: 0</div>
+        <div id="counter">Get 4 correct: 0</div>
         <div id="instructions">
             Associate the correct word with the picture.
         </div>
@@ -196,7 +196,9 @@
             const photoContainer = document.getElementById("photo-container");
             const displayedPhoto = document.getElementById("displayed-photo");
             const answerButtons = document.querySelectorAll(".answer-button");
-            let counter = 0;
+            const heartContainers = document.querySelectorAll(".heart_Containers .heart");
+            let wrongAnswerCounter = 0;
+            let count = 0;
     
             const photoData = [
                 { src: "../Images/Associating_Words_Car_Image.jpeg", correctAnswer: "Car" },
@@ -211,18 +213,40 @@
                     [array[i], array[j]] = [array[j], array[i]];
                 }
             }
-            
+
+            function displayNewCounter(){
+                const counter = document.getElementById('counter');
+                const currentCount = parseInt(counter.textContent.split(" ")[2]);
+                counter.textContent = `Get 4 correct: ${count}`;
+            }
+
+            function removeHeart() {
+                if (wrongAnswerCounter < 3) {
+                    const heartId = `heart${wrongAnswerCounter + 1}`;
+                    const heart = document.getElementById(heartId);
+                    
+                    if (heart) {
+                        heart.style.background = "transparent";
+                        wrongAnswerCounter += 1;
+                    }
+
+                    if (wrongAnswerCounter === 3) {
+                        window.location.href = "gameOver_Page.html";
+                    }
+                }
+            }
+
             function assignAnswers() {
                 shuffleArray(photoData);
                 displayedPhoto.src = photoData[0].src;
                 const correctAnswer = photoData[0].correctAnswer;
-    
+
                 shuffleArray(answerButtons);
-    
+
                 answerButtons.forEach(button => {
                     button.textContent = "";
                 });
-    
+
                 const correctButtonIndex = Math.floor(Math.random() * answerButtons.length);
                 answerButtons[correctButtonIndex].textContent = correctAnswer;
 
@@ -234,21 +258,25 @@
                     answerButtons[incorrectIndex].textContent = photoData[i + 1].correctAnswer;
                 });
             }
-    
+
             function startRound() {
                 assignAnswers();
             }
-    
+
             startRound();
-    
+
             answerButtons.forEach(button => {
                 button.addEventListener("click", () => {
                     const selectedAnswer = button.textContent;
                     if (selectedAnswer === photoData[0].correctAnswer) {
-                        counter += 1;
-                        if (counter === 4) {
-                            window.location.href = "sorting_shapes_congratulation.html";
+                        count += 1;
+                        displayNewCounter();
+                        if (count === 4) {
+                            window.location.href = "congratulations_Page.html";
                         }
+                    } 
+                    else {
+                        removeHeart();
                     }
                     startRound();
                 });

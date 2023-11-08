@@ -140,7 +140,7 @@
             background-color: white;
             padding: 1rem;
         }
-        .counter{
+        #counter{
             font-family: 'RustyHooksRegular';
             font-size: 1.5rem;
             position: absolute;
@@ -160,7 +160,7 @@
     <a href="../index.html">
         <button type="button" class="top-left" id="button_back">Quit</button>
     </a>
-    <div class="counter">Get 4 correct: 0</div>
+    <div id="counter">Get 4 correct: 0</div>
     <div class="monitor">
         <div class="outer_screen">
             <div id="inner_screen">
@@ -179,7 +179,7 @@
         const RANDOM_QUOTE_API_URL = 'http://api.quotable.io/random'
         const quoteDisplayElement = document.getElementById('textInsideMonitor')
         const quoteInputElement = document.getElementById('quoteInput')
-        let counter = 0
+        let count = 0;
 
         quoteInputElement.addEventListener('input', () => {
         const arrayQuote = quoteDisplayElement.querySelectorAll('span')
@@ -202,18 +202,27 @@
             }
         })
 
-        if (correct) renderNewQuote()
+        if (correct) renderNewQuote() ,displayNewCounter()
         })
 
         function getRandomQuote() {
         return fetch(RANDOM_QUOTE_API_URL)
             .then(response => response.json())
-            .then(data => data.content, counter +=1)
-        }
+            .then(data => data.content, increaseCounter())
 
+        }
+        function increaseCounter() {
+            count+=1
+        }
+        function displayNewCounter(){
+            const counter = document.getElementById('counter');
+            const currentCount = parseInt(counter.textContent.split(" ")[2]);
+            counter.textContent = `Get 4 correct: ${count-1}`;
+        }
         async function renderNewQuote() {
-            if (counter == 4){
-                window.location.href = "sorting_shapes_congratulation.html";
+
+            if (count == 4){
+                window.location.href = "congratulations_Page.html";
             }
             const quote = await getRandomQuote()
             quoteDisplayElement.innerHTML = ''
