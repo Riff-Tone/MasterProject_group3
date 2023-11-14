@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drawing Canvas</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: url('');
+            background-position: center;
+            background-size: contain;
+        }
+
+        #canvas-container {
+            border: 1px solid black;
+            background: url("Images/Bird_1080.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+</head>
+<body>
+    <div id="canvas-container"></div>
+        <script>
+        let colors = []; // Array to hold color palette
+        let selectedColor; // Currently selected color
+        let houseParts = []; // Array to hold parts of the house structure
+        let colorPicker; // Color picker input
+
+        function setup() {
+            let cnv = createCanvas(500, 500); // Smaller canvas
+            cnv.parent('canvas-container');
+            colors = [color('#FF0000'), color('#FFA07A'), color('#FFD700'), color('#ADFF2F'), color('#32CD32'), color('#00FF00'), color('#00FFFF'), color('#7FFFD4'), color('#0000FF'), color('#8A2BE2'), color('#FF00FF'), color('#FF69B4')];
+            selectedColor = colors[0]; // Set initial color selection
+
+            colorPicker = createInput("#000000", "color");
+            colorPicker.position(10, 50);
+            colorPicker.input(changeColor);
+        }
+
+        function changeColor() {
+            selectedColor = color(colorPicker.value());
+        }
+
+        function draw() {
+            // No need for draw in an infinite canvas
+        }
+
+        function mousePressed() {
+            for (let i = 0; i < colors.length; i++) {
+                if (mouseX > 10 + i * 30 && mouseX < 40 + i * 30 && mouseY > 10 && mouseY < 40) {
+                    selectedColor = colors[i];
+                    return;
+                }
+            }
+            fill(selectedColor);
+            noStroke();
+            ellipse(mouseX, mouseY, 20, 20); // Draw a circle at the mouse position
+        }
+
+        function mouseDragged() {
+            fill(selectedColor);
+            noStroke();
+            ellipse(mouseX, mouseY, 20, 20); // Draw a circle while dragging the mouse
+        }
+
+        function mouseMoved() {
+            cursor('default');
+            for (let i = 0; i < colors.length; i++) {
+                if (mouseX > 10 + i * 30 && mouseX < 40 + i * 30 && mouseY > 10 && mouseY < 40) {
+                    cursor('pointer');
+                    break;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

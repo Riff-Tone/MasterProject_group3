@@ -80,9 +80,7 @@
     <script>
         const colorBoxes = document.querySelectorAll('.colorBoxes');
         const canvas = document.getElementById("canvas");
-        let colorValue = 0;
-        let totalPixelValue = 0;
-        let totalNegValue = 0;
+        let colorValue = -998;
         let selectedColor = 1;
 
         /*
@@ -95,27 +93,12 @@
 
         let map = [
             [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
-            [5, 5, 5, 5, 5, 5, 1, 1, 1, 1, 5, 5, 5, 5, 5, 5],
-            [5, 5, 5, 5, 1, 1, 2, 2, 2, 2, 1, 1, 5, 5, 5, 5],
-            [5, 5, 5, 1, 2, 2, 2, 2, 2, 2, 2, 2, 1, 5, 5, 5],
-            [5, 5, 1, 2, 2, 3, 2, 2, 2, 2, 2, 2, 1, 1, 5, 5],
-            [5, 5, 1, 2, 3, 2, 2, 2, 2, 2, 2, 2, 2, 1, 5, 5],
-            [5, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 5],
-            [5, 1, 1, 1, 2, 2, 2, 2, 1, 1, 1, 2, 2, 2, 1, 5],
-            [5, 1, 1, 1, 1, 2, 2, 1, 3, 3, 3, 1, 2, 2, 1, 5],
-            [5, 1, 4, 3, 3, 1, 1, 1, 3, 3, 3, 1, 1, 1, 1, 5],
-            [5, 5, 1, 3, 3, 3, 1, 1, 3, 3, 3, 1, 3, 1, 5, 5],
-            [5, 5, 1, 4, 3, 3, 3, 3, 1, 1, 1, 3, 3, 1, 5, 5],
-            [5, 5, 5, 1, 4, 3, 3, 3, 3, 3, 3, 3, 1, 5, 5, 5],
-            [5, 5, 5, 5, 1, 1, 4, 4, 3, 3, 1, 1, 5, 5, 5, 5],
-            [5, 5, 5, 5, 5, 5, 1, 1, 1, 1, 5, 5, 5, 5, 5, 5],
-            [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5],
+
         ];
 
         function drawBlocks() {
             for (let i = 0; i < map.length; i++) {
                 for (let j = 0; j < map[i].length; j++) {
-                    totalPixelValue += map[i][j];
                     const createBox = document.createElement("div");
                     createBox.classList.add("pixelBox");
                     canvas.appendChild(createBox);
@@ -126,7 +109,6 @@
                     
                     createBox.addEventListener("click", () => {
                     map[i][j] = selectedColor;
-                    totalNegValue += colorValue;
                     createBox.style.backgroundColor = getColor(selectedColor);
                     checkCompletion();
                     });
