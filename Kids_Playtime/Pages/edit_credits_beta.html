@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kids_Playtime</title>
+    <style>
+        * {
+            font-weight: 530;
+        }
+        @font-face {
+            font-family: 'SunnyspellsRegular-MV9ze';
+            src: url('../Kids_Playtime/Fonts/SunnyspellsRegular-MV9ze.otf') format('woff2'),
+                 url('../Kids_Playtime/Fonts/SunnyspellsRegular-MV9ze.otf') format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'RustyHooksRegular-nROER';
+            src: url('../Kids_Playtime/Fonts/RustyHooksRegular-nROER.ttf') format('woff2'),
+                url("../Kids_Playtime/Fonts/RustyHooksRegular-nROER.ttf") format('woff');
+            font-weight: normal;
+            font-style: normal;
+        }
+        body {
+            background-color: #84ccf2;
+        }
+
+        header{
+            font-size: 80px;
+            top: 0;
+            width: 100%;
+            text-align: center;
+            font-family: 'SunnyspellsRegular-MV9ze';
+        }
+
+        .credits_container{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .credit {
+            font-size: 24px;
+            margin: 10px;
+            opacity: 0;
+            animation: rollCredits 10s linear infinite;
+        }
+
+        #credit{
+            text-decoration: none; 
+            color: black; 
+        }
+
+        @keyframes rollCredits {
+            0% {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            5%, 95% {
+                transform: translateY(0%);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100%);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+    <body> 
+        <header>Kids Playtime</header>
+        <div class="credits_container">
+            <div class="credit"><span id="developer"></span></div>
+            <div class="credit"><span id="role"></span></div>
+        </div>
+
+        <script>
+            const creditsData = [
+                {
+                    developer: "Kids PlayTime",
+                    role: " ",
+                    
+                },
+                {
+                    developer: "Diego",
+                    role: "Main dessigner",
+                    
+                },
+                {
+                    developer: "Julian",
+                    role: "creative guy",
+                    
+                },
+                {
+                    developer: "Abbhy",
+                    role: "story board for coloring",
+                    
+                },
+                {
+                    developer: "the guy with the cap",
+                    role: "hasn't done nothing",
+                
+                },
+                {
+                    developer: "the guy that its been caping",
+                    role: "hasn't done nothing",
+                
+                },
+                {
+                    developer: "the guy that its been doing something??",
+                    role: "hasn't done nothing",
+                    
+                }
+            ];
+
+            const creditsElements = Object.keys(creditsData[0]);
+            let currentIndex = 0;
+
+            function updateCredits() {
+                const currentSet = creditsData[currentIndex];
+                for (const element of creditsElements) {
+                    const span = document.getElementById(element);
+                    span.textContent = currentSet[element];
+                }
+
+                currentIndex = (currentIndex + 1) % creditsData.length;
+            }
+
+            setInterval(updateCredits, 2000); 
+        </script>
+    </body>
+</html>
