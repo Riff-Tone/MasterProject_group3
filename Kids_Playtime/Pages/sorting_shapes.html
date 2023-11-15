@@ -31,7 +31,7 @@
 
         .text {
             border: 1px solid #84ccf2;
-            margin-top: 1rem;
+            margin-top: 2rem;
             color: black;
             display: flex;
             align-items: center;
@@ -160,10 +160,32 @@
             text-decoration: none; 
             color: black; 
         }
+        .heart_Containers{
+            position: absolute;
+            right: 5rem;
+            top: 3rem;
+            width: 9rem;
+            height: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        #heart1, #heart2, #heart3{
+            width: 2.5rem;
+            height: 100%;
+            background: url('../Images/red_heart_transparent.png');
+            background-position: center;
+            background-size: contain;
+        }
     </style>
 </head>
 <body>
     <title>Kids Playtime</title>
+    <div class="heart_Containers">
+        <div id="heart1"></div>
+        <div id="heart2"></div>
+        <div id="heart3"></div>
+    </div>
     <div class="header">
         <div class="button_container">
             <a id='back' href="../index.html">back</a>
@@ -185,6 +207,23 @@
         </div>
     </div>
     <script>
+        let wrongAnswerCounter = 0;
+
+        function removeHeart() {
+            if (wrongAnswerCounter < 3) {
+                const heartId = `heart${wrongAnswerCounter + 1}`;
+                const heart = document.getElementById(heartId);
+                
+                if (heart) {
+                    heart.style.background = "transparent";
+                    wrongAnswerCounter += 1;
+                }
+
+                if (wrongAnswerCounter === 3) {
+                    window.location.href = "gameOver_Page.html";
+                }
+            }
+        }
         function generateRandomShapes() {
             const container = document.getElementById("pick-and-drag-container");
             container.innerHTML = '';
@@ -244,6 +283,9 @@
                         shapeToRemove.remove();
                         checkForCompletion();
                     }
+                    else{
+                        removeHeart();
+                    }
                 });
             });
             function checkForCompletion() {
@@ -252,6 +294,9 @@
 
                 if (currentCount == 10) {
                     window.location.href = "congratulations_Page.html";
+                }
+                if(wrongAnswerCounter == 3){
+                    window.location.href = "gameOver_Page.html";
                 }
             }
         </script>
