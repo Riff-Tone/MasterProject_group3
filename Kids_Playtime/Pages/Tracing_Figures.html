@@ -33,13 +33,13 @@
         }
         
         .option {
-            width: 100%; /* Adjusted width for long answer choices */
+            width: 100%; 
             padding: 10px;
             margin: 5px;
             background-color: #e0e0e0;
             border-radius: 5px;
             cursor: pointer;
-            overflow-wrap: break-word; /* Wrap long text */
+            overflow-wrap: break-word; 
         }
         
         .result {
@@ -158,7 +158,6 @@
             return array;
         }
 
-        // Shuffle the array of questions
         shuffleArray(questions);
         
         function displayQuestion() {
@@ -191,10 +190,10 @@
                     alert("Quiz completed!");
                     currentQuestionIndex = 0;
                     correctAnswers = 0;
-                    shuffleArray(questions); // Shuffle the questions again for next round
+                    shuffleArray(questions);
                     displayQuestion();
                 }
-            }, 2000);
+            }, 800);
         }
         
         displayQuestion();

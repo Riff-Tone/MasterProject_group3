@@ -201,7 +201,6 @@
             return array;
         }
         
-        // Shuffle the array of questions
         shuffleArray(questions);
         
         function displayQuestion() {
@@ -234,7 +233,7 @@
                     alert("Quiz completed!");
                     currentQuestionIndex = 0;
                     correctAnswers = 0;
-                    shuffleArray(questions); // Shuffle the questions again for next round
+                    shuffleArray(questions); 
                     displayQuestion();
                 }
             }, 800);
