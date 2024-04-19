@@ -1,113 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>credit example</title>
-    <style>
-        body{
-            display: flex;
-            flex-direction: column;
-            background-color: #f0ece7;
-        }
-        .container{
-            width:100%;
-            height: 5rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .bars{
-            background-color: black;
-            width: 20rem;
-            height: .8rem;
-            margin: 1rem;
-        }
-        .diamond{
-            border: 2px solid black;
-            height: 2rem;
-            width: 2rem;
-            transform: rotate(45deg);
-            justify-content: space-between;
-            align-content: space-between;
-            margin: 1rem;
-        }
-        .header_text{
-            color: black;
-            font-size: 5rem;;
-        }
-
-        #button_back {
-            background-color: #dfd7cc;
-            color: black;
-            padding: 15px 30px;
-            cursor: pointer;
-            font-size: 15px;
-            position: absolute;
-            bottom: 5rem;
-            left: 39rem;
-            font-size: 1.5rem;
-        }
-        .content_container{
-            display: flex;
-            flex-direction: row;
-        }
-        .left_container, .right_container{
-            width: 50%;
-            height:100%;
-        }
-
-        #homepage, #Associating_Words, #Body_Parts, #Sorting_Shapes, #Practice_typing, #Coloring, #Tracing_figures, #Credits{
-            
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            flex-direction: column;
-            height: 7rem;
-            /* or set height to 9.5*/
-        }
-        .credit_names{
-            font-size: 1rem;
-        }
-   </style>
-</head>
-<body>
-    <Header>
-        <div class="container">
-            <div class="bars"></div>
-            <div class="diamond"></div>
-            <div class="header_text">Credit</div>
-            <div class="diamond"></div>
-            <div class="bars"></div>
-        </div>
-    </Header>
-    <a>
-        <button type="button" id="button_back">HomePage</button>
-    </a>
-    <div class="content_container">
-        <div class="left_container">
-            <div id="homepage">HomePage
-                <p class="credit_names">Diego Gayosso Hernandez</p>
-            </div>
-            <div id="Associating_Words">Associating Words
-                <p class="credit_names">Diego Gayosso Hernandez</p>
-            </div>
-            <div id="Body_Parts">Body Parts</div>
-            <div id="Sorting_Shapes">Sorting Shapes
-                <p class="credit_names">Diego Gayosso Hernandez</p>
-            </div>
-        </div>
-        <div class="right_container">
-            <div id="Practice_typing">Practice Typing
-                <p class="credit_names">Diego Gayosso Hernandez</p>
-            </div>
-            <div id="Coloring">Coloring</div>
-            <div id="Tracing_figures">Tracing_Figures</div>
-            <div id="Credits">Credit Page
-                <p class="credit_names">Diego Gayosso Hernandez</p>
-            </div>
-        </div>
-    </div>
-</body>
-</html>
+const questions = [
+            {
+                prompt: "The process by which we \"look in the mirror\" to see ourselves as cultural beings is known as _____.",
+                options: ["self-reflexivity", "self-awareness", "journaling", "heterogeneity"],
+                correctAnswer: "self-reflexivity"
+            },
+            {
+                prompt: "The way individuals make sense of their multiple images concerning the sense of self in different social contexts is known as _____.",
+                options: ["Nativism", "cultural humility", "identity management", "anglocentrism"],
+                correctAnswer: "identity management"
+            },
+            {
+                prompt: "Researchers who use the _____ approach to studying intercultural communication are interested not only in understanding human behavior but also in changing the lives of everyday communicators.",
+                options: ["Rhetorical", "Interpretive", "critical", "functionalist"],
+                correctAnswer: "critical"
+            },
+            {
+                prompt: "Researchers using a critical perspective attempt to explain: ",
+                options: ["how macrocontexts such as political structures influence communication.", "how specific cultural differences might predict communication conflicts.", "intercultural communication by providing in-depth descriptions of cultural patterns.", "variations in communication strategies used by people from different cultures."],
+                correctAnswer: "how macrocontexts such as political structures influence communication."
+            },
+            {
+                prompt: "The privilege–disadvantage dialectic recognizes that:",
+                options: ["all people are disadvantaged in most contexts.", "all people are advantaged if they decide to be.", "some people are disadvantaged in some contexts and neutral in others.", "some people are disadvantaged in some contexts and privileged in other contexts."],
+                correctAnswer: "some people are disadvantaged in some contexts and privileged in other contexts."
+            },
+            {
+                prompt: "A research method where writers examine their own life experiences to discover broader cultural insights is known as:",
+                options: ["frame analysis.", "phenomenography.", "autoethnography.", "hermeneutics."],
+                correctAnswer: "autoethnography."
+            },
+            {
+                prompt: "Hiring practices where resumes and applicants with \"foreign\" or \"non-white\" names are routinely rejected, leading some applicants to \"whiten\" their resumes, are an example of:",
+                options: ["institutionalized discriminations.", "relational messages.", "expectancy violations.", "exclusionary zoning practices."],
+                correctAnswer: "institutionalized discriminations."
+            },
+            {
+                prompt: "Information about other people's identity based on visible physical characteristics is referred to as:",
+                options: ["relational learning.", "self-disclosure.", "line of sight.", "cognitive consistency."],
+                correctAnswer: "line of sight."
+            },
+            {
+                prompt: "Why is linguistic knowledge important to intercultural communication competence?",
+                options: ["It helps identify nonverbal behaviors that occur in various contexts.", "It increases one's empathy for culturally different individuals.", "It increases one's sensitivity to ethical dilemmas.", "It helps one understand how competent behaviors vary from culture to culture. "],
+                correctAnswer: "It increases one's empathy for culturally different individuals."
+            }
+        ];
